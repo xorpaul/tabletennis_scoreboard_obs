@@ -1,0 +1,84 @@
+<html>
+<style>
+    body {
+        background-color: black;
+    }
+
+    #top_score,
+    #bottom_score {
+        text-align: center;
+        top: -131px;
+        left: -120px;
+        font-size: 41px;
+        color: yellow;
+        font: Consolas;
+        position: relative;
+    }
+
+    #top_score {
+        padding-top: 2px;
+    }
+
+    #wrapper {
+        position: relative;
+    }
+
+    #img {
+        position: relative;
+
+    }
+</style>
+
+<div id="wrapper">
+    <img src="bg.png" id="bg"></img>
+    <div id="top_score">0</div>
+    <div id="bottom_score">0</div>
+
+</div>
+</br> </br> </br> </br> </br>
+
+<button id="top" onclick="topi()">top +</button>
+<button id="topm" onclick="topm()">top -</button>
+<button id="topr" onclick="topr()">top reset to 0</button>
+</br></br>
+<button id="bottom" onclick="bottomi()">bottom +</button>
+<button id="bottomm" onclick="bottomm()">bottom -</button>
+<button id="bottomr" onclick="bottomr()">bottom reset to 0</button>
+
+
+<script>
+    var top_score = 0;
+    var bottom_score = 0;
+
+    function topi() {
+        top_score = top_score + 1;
+        document.getElementById('top_score').innerHTML = top_score;
+    };
+
+    function topm() {
+        top_score = top_score - 1;
+        document.getElementById('top_score').innerHTML = top_score;
+    };
+
+    function topr() {
+        top_score = 0;
+        document.getElementById('top_score').innerHTML = top_score;
+    };
+
+    function bottomi() {
+        bottom_score = bottom_score + 1;
+        document.getElementById('bottom_score').innerHTML = bottom_score;
+    };
+
+    function bottomm() {
+        bottom_score = bottom_score - 1;
+        document.getElementById('bottom_score').innerHTML = bottom_score;
+    };
+
+    function bottomr() {
+        bottom_score = 0;
+        document.getElementById('bottom_score').innerHTML = bottom_score;
+    };
+</script>
+
+</html>
