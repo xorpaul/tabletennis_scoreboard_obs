@@ -4,38 +4,52 @@
         background-color: black;
     }
 
-    #top_score,
-    #bottom_score {
-        text-align: center;
-        top: -131px;
-        left: -120px;
-        font-size: 41px;
-        color: yellow;
-        font: Consolas;
+    wrapper {
         position: relative;
+    }
+
+    div {
+        text-align: left;
+        top: 10px;
+        font-size: 41px;
+        color: white;
+        font: Consolas;
+        position: absolute;
     }
 
     #top_score {
-        padding-top: 2px;
+        left: 231px;
     }
 
-    #wrapper {
-        position: relative;
+    #bottom_score {
+        left: 231px;
+        top: 52px;
     }
 
-    #img {
-        position: relative;
+    #top_set_score {
+        color: black;
+        font-weight: bold;
+        left: 156px;
+    }
 
+    #bottom_set_score {
+        color: black;
+        font-weight: bold;
+        left: 156px;
+        top: 52px;
     }
 </style>
 
 <div id="wrapper">
-    <img src="bg.png" id="bg"></img>
+    <img src="bg6.png" alt="bg">
     <div id="top_score">0</div>
     <div id="bottom_score">0</div>
-
+    <div id="top_set_score">0</div>
+    <div id="bottom_set_score">0</div>
 </div>
-</br> </br> </br> </br> </br>
+</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
+</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
+</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
 
 <button id="top" onclick="topi()">top +</button>
 <button id="topm" onclick="topm()">top -</button>
@@ -44,11 +58,17 @@
 <button id="bottom" onclick="bottomi()">bottom +</button>
 <button id="bottomm" onclick="bottomm()">bottom -</button>
 <button id="bottomr" onclick="bottomr()">bottom reset to 0</button>
+</br> </br>
+<button id="nextset" onclick="nextset()">NEXT SET</button>
+<button id="resetall" onclick="resetall()">RESET ALL</button>
 
 
 <script>
     var top_score = 0;
     var bottom_score = 0;
+    var top_set_score = 0;
+    var bottom_set_score = 0;
+
 
     function topi() {
         top_score = top_score + 1;
@@ -79,6 +99,36 @@
         bottom_score = 0;
         document.getElementById('bottom_score').innerHTML = bottom_score;
     };
+
+    function nextset() {
+
+        document.getElementById('bottom_score').innerHTML = bottom_score;
+        document.getElementById('top_score').innerHTML = top_score;
+
+
+        if (top_score > bottom_score) {
+            top_set_score = top_set_score + 1
+
+        } else {
+            bottom_set_score = bottom_set_score + 1
+        }
+
+        document.getElementById('bottom_set_score').innerHTML = bottom_set_score;
+        document.getElementById('top_set_score').innerHTML = top_set_score;
+
+        topr();
+        bottomr();
+    };
+
+    function resetall() {
+        bottom_set_score = 0;
+        top_set_score = 0;
+        document.getElementById('bottom_set_score').innerHTML = bottom_set_score;
+        document.getElementById('top_set_score').innerHTML = top_set_score;
+        topr();
+        bottomr();
+    };
+
 </script>
 
 </html>
