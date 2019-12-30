@@ -17,6 +17,18 @@
         position: absolute;
     }
 
+    #score_text {
+        top: -1px;
+        font-size: 15px;
+        left: 227px;
+    }
+
+    #set_text {
+        top: -1px;
+        font-size: 15px;
+        left: 152px;
+    }
+
     #top_score {
         left: 231px;
     }
@@ -41,14 +53,14 @@
 </style>
 
 <div id="wrapper">
-    <img src="bg.png" alt="bg">
+    <img src="images/bg-top.png" alt="bg" id="bg">
+    <div id="score_text">Points</div>
+    <div id="set_text">Sets</div>
     <div id="top_score">0</div>
     <div id="bottom_score">0</div>
     <div id="top_set_score">0</div>
     <div id="bottom_set_score">0</div>
 </div>
-</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
-</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
 </br> </br> </br> </br> </br></br> </br> </br> </br> </br>
 
 <button id="top" onclick="topi()">top +</button>
@@ -61,7 +73,11 @@
 </br> </br>
 <button id="nextset" onclick="nextset()">NEXT SET</button>
 <button id="resetall" onclick="resetall()">RESET ALL</button>
-
+<button id="swapsbg" onclick="swapsbg()">SWAP SERVE</button>
+<button onclick="swapbg()">SWAP BG IMAGE</button>
+<input id="file-input" type="file" name="name" style="display: none;" />
+</br></br>
+<button id="toggle_header" onclick="toggle_header_text()">TOGGLE HEADER TEXT</button>
 
 <script>
     var top_score = 0;
@@ -69,10 +85,39 @@
     var top_set_score = 0;
     var bottom_set_score = 0;
 
+    function swapsbg() {
+
+        if (!((top_score + bottom_score) % 2) || ((top_score >= 10) && (bottom_score >= 10))) {
+
+            imgsrc = document.getElementById("bg").src;
+
+            if (imgsrc.match(/top/g)) {
+                imgsrc = imgsrc.replace("top", "bottom")
+            } else {
+                imgsrc = imgsrc.replace("bottom", "top")
+            }
+            document.getElementById("bg").src = imgsrc;
+        }
+    }
+
+    function swapbg() {
+        var input = document.createElement('input');
+        input.type = 'file';
+
+        input.onchange = e => {
+            var file = e.target.files[0];
+            //alert(file.name);
+            document.getElementById("bg").src = "images/" + file.name;
+        }
+
+        input.click();
+
+    }
 
     function topi() {
         top_score = top_score + 1;
         document.getElementById('top_score').innerHTML = top_score;
+        swapsbg();
     };
 
     function topm() {
@@ -88,6 +133,7 @@
     function bottomi() {
         bottom_score = bottom_score + 1;
         document.getElementById('bottom_score').innerHTML = bottom_score;
+        swapsbg();
     };
 
     function bottomm() {
@@ -127,6 +173,18 @@
         document.getElementById('top_set_score').innerHTML = top_set_score;
         topr();
         bottomr();
+    };
+
+    function toggle_header_text() {
+        score_text = document.getElementById('score_text').innerHTML;
+        set_text = document.getElementById('set_text').innerHTML;
+        if (score_text == "" || set_text == "") {
+            document.getElementById('score_text').innerHTML = "Points";
+            document.getElementById('set_text').innerHTML = "Sets";
+        } else {
+            document.getElementById('score_text').innerHTML = "";
+            document.getElementById('set_text').innerHTML = "";
+        }
     };
 
 </script>
