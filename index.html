@@ -1,7 +1,9 @@
 <html>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet">
+<!-- <meta http-equiv="Refresh" content="1"> -->
 <style>
     body {
-        background-color: black;
+        background-color: gray;
     }
 
     wrapper {
@@ -9,59 +11,136 @@
     }
 
     div {
-        text-align: left;
+        text-align: center;
         top: 10px;
-        font-size: 41px;
+        font-size: 253%;
         color: white;
-        font: Consolas;
+        font: Inconsolata;
         position: absolute;
     }
 
-    #score_text {
-        top: -1px;
-        font-size: 15px;
-        left: 227px;
+    #colorselector {
+        font-size: 153%;
+        color: white;
+        font: Inconsolata;
+        position: relative;
     }
 
-    #set_text {
-        top: -1px;
-        font-size: 15px;
-        left: 152px;
+    .header_text {
+        top: -10px;
+        font-size: 30px;
+    }
+
+    #game_text {
+        left: 99%;
+    }
+
+    #score_text {
+        left: 130%;
+    }
+
+    .player {
+        padding: 5px;
+        color: black;
+        font-weight: bold;
+        left: 206px;
+        height: 36%;
+        width: 50%;
+        border-radius: 15px 50px 30px;
+        border: 3px solid black;
+        -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+    }
+
+    #top_player {
+        top: 10%;
+        background-color: green;
+    }
+
+    #bottom_player {
+        top: 53%;
+        background-color: red;
+    }
+
+    .game {
+        color: black;
+        font-weight: bold;
+        left: 128%;
+        background-color: white;
+        border-radius: 15px 50px 30px;
+        border: 3px solid;
+        -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+    }
+
+    #top_game_score {
+        top: 10%;
+    }
+
+    #bottom_game_score {
+        top: 53%;
+    }
+
+    .score {
+        text-align: center;
+        left: 152%;
+        width: 39%;
+        border-radius: 15px 50px 30px;
+        border: 3px solid;
+        -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
     }
 
     #top_score {
-        left: 231px;
+        top: 30px;
+        background-color: green;
     }
 
     #bottom_score {
-        left: 231px;
-        top: 52px;
+        top: 53%;
+        background-color: red;
     }
 
-    #top_set_score {
-        color: black;
-        font-weight: bold;
-        left: 156px;
+    .serve_indicator {
+        width: 0;
+        height: 0;
+        border: 9px;
+        border-top: 45px solid transparent;
+        border-bottom: 45px solid transparent;
+        border-right: 45px solid white;
+        left: 189%;
     }
 
-    #bottom_set_score {
-        color: black;
-        font-weight: bold;
-        left: 156px;
-        top: 52px;
+
+    #serve_indicator_top_player {
+        top: 15%;
+    }
+
+    #serve_indicator_bottom_player {
+        top: 58%;
     }
 </style>
 
 <div id="wrapper">
-    <img src="images/bg-top.png" alt="bg" id="bg">
-    <div id="score_text">Points</div>
-    <div id="set_text">Sets</div>
-    <div id="top_score">0</div>
-    <div id="bottom_score">0</div>
-    <div id="top_set_score">0</div>
-    <div id="bottom_set_score">0</div>
+    <img src="images/stehtischtennis.png" alt="stehtischtennis" id="avatar">
+    <div class="header_text" id="score_text"></div>
+    <div class="header_text" id="game_text"></div>
+    <div class="player" id="top_player"></div>
+    <div class="player" id="bottom_player"></div>
+    <div class="score" id="top_score">0</div>
+    <div class="score" id="bottom_score">13</div>
+    <div class="game" id="top_game_score">0</div>
+    <div class="game" id="bottom_game_score">0</div>
+    <div class="serve_indicator" id="serve_indicator_top_player"></div>
+    <div class="serve_indicator" id="serve_indicator_bottom_player" style="display: none;"></div>
 </div>
 </br> </br> </br> </br> </br></br> </br> </br> </br> </br>
+</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
+</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
+
 
 <button id="top" onclick="topi()">top +</button>
 <button id="topm" onclick="topm()">top -</button>
@@ -71,47 +150,45 @@
 <button id="bottomm" onclick="bottomm()">bottom -</button>
 <button id="bottomr" onclick="bottomr()">bottom reset to 0</button>
 </br> </br>
-<button id="nextset" onclick="nextset()">NEXT SET</button>
+<button id="nextgame" onclick="nextgame()">NEXT GAME</button>
 <button id="resetall" onclick="resetall()">RESET ALL</button>
 <button id="swapsbg" onclick="swapsbg()">SWAP SERVE</button>
-<button onclick="swapbg()">SWAP BG IMAGE</button>
 <input id="file-input" type="file" name="name" style="display: none;" />
 </br></br>
 <button id="toggle_header" onclick="toggle_header_text()">TOGGLE HEADER TEXT</button>
 
+<div id="colorselector" style="text-align: left; color: black;">
+
+    <p>Choose your player's colors:</p>
+
+    <input type="color" id="color_top_player" name="top_player" value="#008000">
+    <label for="top_player">Top player</label>
+    </br>
+    <input type="color" id="color_bottom_player" name="bottom_player" value="#FF0000">
+    <label for="bottom_player">Bottom Player</label>
+
+</div>
+
 <script>
     var top_score = 0;
     var bottom_score = 0;
-    var top_set_score = 0;
-    var bottom_set_score = 0;
+    var top_game_score = 0;
+    var bottom_game_score = 0;
 
     function swapsbg() {
 
         if (!((top_score + bottom_score) % 2) || ((top_score >= 10) && (bottom_score >= 10))) {
 
-            imgsrc = document.getElementById("bg").src;
-
-            if (imgsrc.match(/top/g)) {
-                imgsrc = imgsrc.replace("top", "bottom")
+            var top_player = document.getElementById("serve_indicator_top_player");
+            var bottom_player = document.getElementById("serve_indicator_bottom_player");
+            if (top_player.style.display === "none") {
+                top_player.style.display = "block";
+                bottom_player.style.display = "none";
             } else {
-                imgsrc = imgsrc.replace("bottom", "top")
+                top_player.style.display = "none";
+                bottom_player.style.display = "block";
             }
-            document.getElementById("bg").src = imgsrc;
         }
-    }
-
-    function swapbg() {
-        var input = document.createElement('input');
-        input.type = 'file';
-
-        input.onchange = e => {
-            var file = e.target.files[0];
-            //alert(file.name);
-            document.getElementById("bg").src = "images/" + file.name;
-        }
-
-        input.click();
-
     }
 
     function topi() {
@@ -146,46 +223,84 @@
         document.getElementById('bottom_score').innerHTML = bottom_score;
     };
 
-    function nextset() {
+    function nextgame() {
 
         document.getElementById('bottom_score').innerHTML = bottom_score;
         document.getElementById('top_score').innerHTML = top_score;
 
 
         if (top_score > bottom_score) {
-            top_set_score = top_set_score + 1
+            top_game_score = top_game_score + 1
 
         } else {
-            bottom_set_score = bottom_set_score + 1
+            bottom_game_score = bottom_game_score + 1
         }
 
-        document.getElementById('bottom_set_score').innerHTML = bottom_set_score;
-        document.getElementById('top_set_score').innerHTML = top_set_score;
+        document.getElementById('bottom_game_score').innerHTML = bottom_game_score;
+        document.getElementById('top_game_score').innerHTML = top_game_score;
 
         topr();
         bottomr();
     };
 
     function resetall() {
-        bottom_set_score = 0;
-        top_set_score = 0;
-        document.getElementById('bottom_set_score').innerHTML = bottom_set_score;
-        document.getElementById('top_set_score').innerHTML = top_set_score;
+        bottom_game_score = 0;
+        top_game_score = 0;
+        document.getElementById('bottom_game_score').innerHTML = bottom_game_score;
+        document.getElementById('top_game_score').innerHTML = top_game_score;
         topr();
         bottomr();
     };
 
     function toggle_header_text() {
         score_text = document.getElementById('score_text').innerHTML;
-        set_text = document.getElementById('set_text').innerHTML;
-        if (score_text == "" || set_text == "") {
+        game_text = document.getElementById('game_text').innerHTML;
+        if (score_text == "" || game_text == "") {
             document.getElementById('score_text').innerHTML = "Points";
-            document.getElementById('set_text').innerHTML = "Sets";
+            document.getElementById('game_text').innerHTML = "Games";
         } else {
             document.getElementById('score_text').innerHTML = "";
-            document.getElementById('set_text').innerHTML = "";
+            document.getElementById('game_text').innerHTML = "";
         }
     };
+    // color selector stuff
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
+    var color_top_player;
+    var color_bottom_player;
+    var top_defaultColor = "#008000";
+    var bottom_defaultColor = "#FF0000";
+
+    window.addEventListener("load", startup, false);
+
+    function startup() {
+        color_top_player = document.querySelector("#color_top_player");
+        color_top_player.value = top_defaultColor;
+        color_top_player.addEventListener("change", updateTopColor, false);
+        color_top_player.select();
+
+        color_bottom_player = document.querySelector("#color_bottom_player");
+        color_bottom_player.value = bottom_defaultColor;
+        color_bottom_player.addEventListener("change", updateBottomColor, false);
+        color_bottom_player.select();
+    }
+
+    function updateTopColor(event) {
+        document.querySelectorAll("#top_player").forEach(function (p) {
+            p.style.backgroundColor = event.target.value;
+        });
+        document.querySelectorAll("#top_score").forEach(function (p) {
+            p.style.backgroundColor = event.target.value;
+        });
+    }
+    function updateBottomColor(event) {
+        document.querySelectorAll("#bottom_player").forEach(function (p) {
+            p.style.backgroundColor = event.target.value;
+        });
+        document.querySelectorAll("#bottom_score").forEach(function (p) {
+            p.style.backgroundColor = event.target.value;
+        });
+    }
+
 
 </script>
 
