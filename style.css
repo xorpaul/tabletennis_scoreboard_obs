@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'TeXGyreHerosCondensed-Regular';
+    font-style: normal;
+    font-weight: bold;
+    src: local('TeXGyreHerosCondensed-Regular'), url('fonts/texgyreheroscn-regular.woff') format('woff');
+}
+
+body {
+    background-color: gray;
+}
+
+#spacer {
+    position: relative;
+    padding: 18%;
+}
+
+div {
+    text-align: center;
+    line-height: 1.184;
+    top: 10px;
+    font-size: 250%;
+    color: white;
+    font-family: TeXGyreHerosCondensed-Regular;
+    position: absolute;
+}
+
+#colorselector {
+    font-size: 160%;
+    color: white;
+    font-family: TeXGyreHerosCondensed-Regular;
+    position: relative;
+}
+
+.header_text {
+    top: -10px;
+    font-size: 30px;
+}
+
+#gamepoint {
+    text-align: right;
+    font-weight: lighter;
+    font-size: 40px;
+    background-color: white;
+    color: black;
+    transform: skew(-10deg);
+    padding: 0;
+    top: 5%;
+    left: 195%;
+    height: 0;
+    width: 0;
+    /* display: none; */
+    visibility: hidden;
+    transition: height 0.25s, padding 0.25s, visibility 0.25s, opacity 0.25s;
+}
+
+#game_text {
+    left: 99%;
+}
+
+#score_text {
+    left: 130%;
+}
+
+.player {
+    color: black;
+    font-weight: bold;
+    height: 34.2%;
+    width: 250%;
+    transform: skew(-10deg);
+    /* border-radius: 50px 15px 50px 30px; */
+    /* border: 1px solid gray; */
+    /* -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
+}
+
+#top_player {
+    top: 23%;
+    left: 106%;
+    /* background-color: green; */
+    background-image: linear-gradient(to bottom right, rgb(41, 180, 41), rgb(0, 70, 0));
+}
+
+#bottom_player {
+    top: 58%;
+    left: 88%;
+    background-image: linear-gradient(to bottom right, rgb(226, 47, 47), rgb(90, 0, 0));
+}
+
+.game {
+    color: black;
+    font-weight: bolder;
+    background-color: white;
+    background-image: linear-gradient(to bottom right, white, rgb(156, 156, 156));
+    transform: skewX(-10deg);
+    /* display: inline; */
+    /* -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
+}
+
+#top_game_score {
+    left: 210%;
+    top: 23%;
+    /* border-bottom: 1px solid gray; */
+    /* border-radius: 30px 0px 0px 0px; */
+}
+
+#bottom_game_score {
+    left: 192%;
+    top: 58%;
+    /* border-radius: 0px 0px 30px 0px; */
+}
+
+.score {
+    text-align: center;
+    transform: skewX(-10deg);
+    width: 100%;
+    /* border-radius: 15px 50px 30px;
+        border: 3px solid;
+        -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
+        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
+}
+
+#top_score {
+    top: 23%;
+    left: 250%;
+    /* background-color: green; */
+}
+
+#bottom_score {
+    top: 58%;
+    left: 232%;
+    /* background-color: red; */
+}
+
+.serve_indicator {
+    width: 0;
+    height: 0;
+    border: 9px;
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-right: 45px solid white;
+    left: 349%;
+}
+
+#serve_indicator_top_player {
+    top: 28%;
+}
+
+#serve_indicator_bottom_player {
+    top: 63%;
+}

@@ -1,385 +1,68 @@
 <html>
 <!-- <meta http-equiv="Refresh" content="1"> -->
-<style>
-    @font-face {
-        font-family: 'TeXGyreHerosCondensed-Regular';
-        font-style: normal;
-        font-weight: bold;
-        src: local('TeXGyreHerosCondensed-Regular'), url('fonts/texgyreheroscn-regular.woff') format('woff');
-    }
 
-    body {
-        background-color: gray;
-    }
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-    wrapper {
-        position: relative;
-    }
+<body>
+    <script src="javascript.js"></script>
 
-    div {
-        text-align: center;
-        line-height: 1.184;
-        top: 10px;
-        font-size: 250%;
-        color: white;
-        font-family: TeXGyreHerosCondensed-Regular;
-        position: absolute;
-    }
-
-    #colorselector {
-        font-size: 160%;
-        color: white;
-        font-family: TeXGyreHerosCondensed-Regular;
-        position: relative;
-    }
-
-    .header_text {
-        top: -10px;
-        font-size: 30px;
-    }
-
-    #gamepoint {
-        text-align: right;
-        font-weight: lighter;
-        font-size: 40px;
-        background-color: white;
-        color: black;
-        transform: skew(-10deg);
-        padding: 0;
-        top: 5%;
-        left: 195%;
-        height: 0;
-        width: 0;
-        /* display: none; */
-        visibility: hidden;
-        transition: height 0.25s, padding 0.25s, visibility 0.25s, opacity 0.25s;
-    }
-
-    #game_text {
-        left: 99%;
-    }
-
-    #score_text {
-        left: 130%;
-    }
-
-    .player {
-        color: black;
-        font-weight: bold;
-        height: 34.2%;
-        width: 250%;
-        transform: skew(-10deg);
-        /* border-radius: 50px 15px 50px 30px; */
-        /* border: 1px solid gray; */
-        /* -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
-    }
-
-    #top_player {
-        top: 23%;
-        left: 106%;
-        /* background-color: green; */
-        background-image: linear-gradient(to bottom right, rgb(41, 180, 41), rgb(0, 70, 0));
-    }
-
-    #bottom_player {
-        top: 58%;
-        left: 88%;
-        background-image: linear-gradient(to bottom right, rgb(226, 47, 47), rgb(90, 0, 0));
-    }
-
-    .game {
-        color: black;
-        font-weight: bolder;
-        background-color: white;
-        transform: skewX(-10deg);
-        /* display: inline; */
-        /* -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
-    }
-
-    #top_game_score {
-        left: 210%;
-        top: 23%;
-        /* border-bottom: 1px solid gray; */
-        /* border-radius: 30px 0px 0px 0px; */
-    }
-
-    #bottom_game_score {
-        left: 192%;
-        top: 58%;
-        /* border-radius: 0px 0px 30px 0px; */
-    }
-
-    .score {
-        text-align: center;
-        transform: skewX(-10deg);
-        width: 100%;
-        /* border-radius: 15px 50px 30px;
-        border: 3px solid;
-        -webkit-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        -moz-box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76);
-        box-shadow: 17px 20px 22px -2px rgba(0, 0, 0, 0.76); */
-    }
-
-    #top_score {
-        top: 23%;
-        left: 250%;
-        /* background-color: green; */
-    }
-
-    #bottom_score {
-        top: 58%;
-        left: 232%;
-        /* background-color: red; */
-    }
-
-    .serve_indicator {
-        width: 0;
-        height: 0;
-        border: 9px;
-        border-top: 45px solid transparent;
-        border-bottom: 45px solid transparent;
-        border-right: 45px solid white;
-        left: 349%;
-    }
-
-
-    #serve_indicator_top_player {
-        top: 28%;
-    }
-
-    #serve_indicator_bottom_player {
-        top: 63%;
-    }
-</style>
-
-<div id="wrapper">
+    <div id="wrapper">
+        </br>
+        <img src="images/stehtischtennis2.png" alt="stehtischtennis" id="avatar">
+        <div class="header_text" id="gamepoint">GAMEPOINT</div>
+        <div class="header_text" id="score_text"></div>
+        <div class="header_text" id="game_text"></div>
+        <div class="player" id="top_player"></div>
+        <div class="player" id="bottom_player"></div>
+        <div class="game" id="top_game_score"><span>0</span></div>
+        <div class="game" id="bottom_game_score"><span>0</span></div>
+        <div class="score" id="top_score">0</div>
+        <div class="score" id="bottom_score">0</div>
+        <div class="serve_indicator" id="serve_indicator_top_player"></div>
+        <div class="serve_indicator" id="serve_indicator_bottom_player" style="display: none;"></div>
+    </div>
+    <div id="spacer"></div>
+    <button id="top" onclick="topi()">top +</button>
+    <button id="topm" onclick="topm()">top -</button>
+    <button id="topr" onclick="topr()">top reset to 0</button>
     </br>
-    <img src="images/stehtischtennis2.png" alt="stehtischtennis" id="avatar">
-    <div class="header_text" id="gamepoint">GAMEPOINT</div>
-    <div class="header_text" id="score_text"></div>
-    <div class="header_text" id="game_text"></div>
-    <div class="player" id="top_player"></div>
-    <div class="player" id="bottom_player"></div>
-    <div class="game" id="top_game_score"><span>0</span></div>
-    <div class="game" id="bottom_game_score"><span>0</span></div>
-    <div class="score" id="top_score">0</div>
-    <div class="score" id="bottom_score">0</div>
-    <div class="serve_indicator" id="serve_indicator_top_player"></div>
-    <div class="serve_indicator" id="serve_indicator_bottom_player" style="display: none;"></div>
-</div>
-</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
-</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
-</br> </br> </br> </br> </br></br> </br> </br> </br> </br>
-
-
-<button id="top" onclick="topi()">top +</button>
-<button id="topm" onclick="topm()">top -</button>
-<button id="topr" onclick="topr()">top reset to 0</button>
-</br></br>
-<button id="bottom" onclick="bottomi()">bottom +</button>
-<button id="bottomm" onclick="bottomm()">bottom -</button>
-<button id="bottomr" onclick="bottomr()">bottom reset to 0</button>
-</br> </br>
-<button id="nextgame" onclick="nextgame()">NEXT GAME</button>
-<button id="resetall" onclick="resetall()">RESET ALL</button>
-<button id="swapsbg" onclick="swapsbg()">SWAP SERVE</button>
-<input id="file-input" type="file" name="name" style="display: none;" />
-</br></br>
-<button id="toggle_header" onclick="toggle_header_text()">TOGGLE HEADER TEXT</button>
-
-<div id="colorselector" style="text-align: left; color: black;">
-
-    <p>Choose your player's colors:</p>
-
-    <input type="color" id="color_top_player" name="top_player" value="#008000">
-    <label for="top_player">Top player</label>
     </br>
-    <input type="color" id="color_bottom_player" name="bottom_player" value="#FF0000">
-    <label for="bottom_player">Bottom Player</label>
+    <button id="bottom" onclick="bottomi()">bottom +</button>
+    <button id="bottomm" onclick="bottomm()">bottom -</button>
+    <button id="bottomr" onclick="bottomr()">bottom reset to 0</button>
+    </br>
+    </br>
+    <button id="nextgame" onclick="nextgame()">NEXT GAME</button>
+    <button id="resetall" onclick="resetall()">RESET ALL</button>
+    <button id="swapserve" onclick="swapserve()">SWAP SERVE</button>
+    <input id="file-input" type="file" name="name" style="display: none;" />
+    </br>
+    <form onChange="swapserve(); return">
+        <p>Game mode:</p>
+        <input type="radio" id="Best-Of-2" name="gamemode" value="1">
+        <label for="Best-Of-2">Best-Of-2</label>
+        <input type="radio" id="Best-Of-3" name="gamemode" value="2">
+        <label for="Best-Of-3">Best-Of-3</label><br>
+        <input type="radio" id="Best-Of-5" name="gamemode" value="3" checked>
+        <label for="Best-Of-5">Best-Of-5</label>
+        <input type="radio" id="Best-Of-7" name="gamemode" value="4">
+        <label for="Best-Of-7">Best-Of-7</label><br>
+    </form>
+    </br>
+    <button id="toggle_header" onclick="toggle_header_text()">TOGGLE HEADER TEXT</button>
 
-</div>
+    <div id="colorselector" style="text-align: left; color: black;">
 
-<script>
-    var top_score = 0;
-    var bottom_score = 0;
-    var top_game_score = 0;
-    var bottom_game_score = 0;
+        <p>Choose your player's colors:</p>
 
-    function swapsbg() {
-
-        if (!((top_score + bottom_score) % 2) || ((top_score >= 10) && (bottom_score >= 10))) {
-
-            var top_player = document.getElementById("serve_indicator_top_player");
-            var bottom_player = document.getElementById("serve_indicator_bottom_player");
-            if (top_player.style.display === "none") {
-                top_player.style.display = "block";
-                bottom_player.style.display = "none";
-            } else {
-                top_player.style.display = "none";
-                bottom_player.style.display = "block";
-            }
-
-        }
-        // gamepoint calculation
-        var gamepoint = document.getElementById("gamepoint");
-        // alert("top_score: " + top_score);
-        // alert("bottom_score: " + bottom_score);
-        if ((top_score >= 10 && bottom_score < 10) || (bottom_score >= 10 && top_score < 10) || (((top_score >= 10) && (bottom_score >= 10)) && (bottom_score != top_score))) {
-            gamepoint.innerText = "GAMEPOINT";
-            // gamepoint.style.display = "block";
-            gamepoint.style.visibility = 'visible';
-            gamepoint.style.height = "14%";
-            gamepoint.style.width = "auto";
-            gamepoint.style.padding = '5%';
-            gamepoint.style.left = '195%';
-        } else {
-            gamepoint.innerText = "";
-            // gamepoint.style.display = "none";
-            gamepoint.style.visibility = 'hidden';
-            //hint.style.opacity = '0';
-            gamepoint.style.height = '0';
-            gamepoint.style.width = '0';
-            gamepoint.style.padding = '0';
-        }
-
-        // matchpoint calculation
-        if (gamepoint.style.visibility == "visible") {
-
-            // TODO: add configuration option for best of 7 mode
-            if ((top_game_score == 2 && top_score > bottom_score) || (bottom_game_score == 2 && bottom_score > top_score)) {
-                gamepoint.innerText = "MATCHPOINT";
-                gamepoint.style.left = "181%";
-            }
-        }
-    }
-
-    function topi() {
-        top_score = top_score + 1;
-        document.getElementById('top_score').innerHTML = top_score;
-        swapsbg();
-    };
-
-    function topm() {
-        top_score = top_score - 1;
-        document.getElementById('top_score').innerHTML = top_score;
-        swapsbg();
-    };
-
-    function topr() {
-        top_score = 0;
-        document.getElementById('top_score').innerHTML = top_score;
-        swapsbg();
-    };
-
-    function bottomi() {
-        bottom_score = bottom_score + 1;
-        document.getElementById('bottom_score').innerHTML = bottom_score;
-        swapsbg();
-    };
-
-    function bottomm() {
-        bottom_score = bottom_score - 1;
-        document.getElementById('bottom_score').innerHTML = bottom_score;
-    };
-
-    function bottomr() {
-        bottom_score = 0;
-        document.getElementById('bottom_score').innerHTML = bottom_score;
-    };
-
-    function nextgame() {
-        // var gamepoint = document.getElementById("gamepoint");
-        // gamepoint.innerText = "";
-        // // gamepoint.style.display = "none";
-        // gamepoint.style.visibility = 'hidden';
-        // //hint.style.opacity = '0';
-        // gamepoint.style.height = '0';
-        // gamepoint.style.width = '0';
-        // gamepoint.style.padding = '0';
-        document.getElementById('bottom_score').innerHTML = bottom_score;
-        document.getElementById('top_score').innerHTML = top_score;
-
-
-        if (top_score > bottom_score) {
-            top_game_score = top_game_score + 1
-
-        } else {
-            bottom_game_score = bottom_game_score + 1
-        }
-
-        document.getElementById('bottom_game_score').innerHTML = bottom_game_score;
-        document.getElementById('top_game_score').innerHTML = top_game_score;
-
-        topr();
-        bottomr();
-        swapsbg();
-    };
-
-    function resetall() {
-        bottom_game_score = 0;
-        top_game_score = 0;
-        document.getElementById("gamepoint").visibility = "hidden";
-        document.getElementById('bottom_game_score').innerHTML = bottom_game_score;
-        document.getElementById('top_game_score').innerHTML = top_game_score;
-        topr();
-        bottomr();
-    };
-
-    function toggle_header_text() {
-        score_text = document.getElementById('score_text').innerHTML;
-        game_text = document.getElementById('game_text').innerHTML;
-        if (score_text == "" || game_text == "") {
-            document.getElementById('score_text').innerHTML = "Points";
-            document.getElementById('game_text').innerHTML = "Games";
-        } else {
-            document.getElementById('score_text').innerHTML = "";
-            document.getElementById('game_text').innerHTML = "";
-        }
-    };
-
-    // color selector stuff
-    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
-    var color_top_player;
-    var color_bottom_player;
-    var top_defaultColor = "#008000";
-    var bottom_defaultColor = "#FF0000";
-
-    window.addEventListener("load", startup, false);
-
-    function startup() {
-        color_top_player = document.querySelector("#color_top_player");
-        color_top_player.value = top_defaultColor;
-        color_top_player.addEventListener("change", updateTopColor, false);
-        color_top_player.select();
-
-        color_bottom_player = document.querySelector("#color_bottom_player");
-        color_bottom_player.value = bottom_defaultColor;
-        color_bottom_player.addEventListener("change", updateBottomColor, false);
-        color_bottom_player.select();
-    }
-
-    function updateTopColor(event) {
-        document.querySelectorAll("#top_player").forEach(function (p) {
-            p.style.backgroundColor = event.target.value;
-        });
-        document.querySelectorAll("#top_score").forEach(function (p) {
-            p.style.backgroundColor = event.target.value;
-        });
-    }
-    function updateBottomColor(event) {
-        document.querySelectorAll("#bottom_player").forEach(function (p) {
-            p.style.backgroundColor = event.target.value;
-        });
-        document.querySelectorAll("#bottom_score").forEach(function (p) {
-            p.style.backgroundColor = event.target.value;
-        });
-    }
-
-
-</script>
+        <input type="color" id="color_top_player" name="top_player" value="#008000">
+        <label for="top_player">Top player</label>
+        </br>
+        <input type="color" id="color_bottom_player" name="bottom_player" value="#FF0000">
+        <label for="bottom_player">Bottom Player</label>
+    </div>
+</body>
 
 </html>
